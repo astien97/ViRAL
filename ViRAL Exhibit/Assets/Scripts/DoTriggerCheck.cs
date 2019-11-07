@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DoTriggerCheck : MonoBehaviour
 {
+    public GameObject canvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +16,13 @@ public class DoTriggerCheck : MonoBehaviour
     void Update()
     {
         OVRInput.Update();
-        Debug.Log(OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.LTouch));
+        if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) != 0)
+        {
+            canvas.SetActive(true);
+        }
+        else
+        {
+            canvas.SetActive(false);
+        }
     }
 }
